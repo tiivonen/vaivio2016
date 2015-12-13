@@ -12,10 +12,34 @@
 
 .container {
   background: honeydew;
-  width: 900px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  /*flex: 0 0 100%;*/
+  /*width: 100%;*/
+  background: pink;
+  height: 200px;
+}
+.content {
+  background: lightblue;
+  /*height: 100px;*/
 }
 p {
   margin: 0;
-  font-size: calc((36 / $fontSize) * 1rem);
+  font-size: 1rem;
+}
+.photocontainer {
+  width: calc(100px * 3 + 3 * 15);
+  display: flex;
+  flex-flow: row wrap;
+
+  img {
+    margin: 7px
+  }
+}
+
+footer {
+  flex-basis: 0;
+  order: 1;
 }

@@ -423,15 +423,53 @@ body {
   --mainColor: red;
 }*/
 :root {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .container {
   background: honeydew;
-  width: 900px;
-  margin: 0 auto;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+header {
+  /*flex: 0 0 100%;*/
+  /*width: 100%;*/
+  background: pink;
+  height: 200px;
+}
+.content {
+  background: lightblue;
+  /*height: 100px;*/
 }
 p {
   margin: 0;
-  font-size: calc(2.25px * 1rem);
+  font-size: 20px;
+  font-size: 1rem;
+}
+.photocontainer {
+  width: 345px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+.photocontainer img {
+  margin: 7px
+}
+
+footer {
+  -ms-flex-preferred-size: 0;
+      -webkit-flex-basis: 0;
+          flex-basis: 0;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+      order: 1;
 }

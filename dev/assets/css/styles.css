@@ -1,0 +1,21 @@
+@import "partials/normalize";
+@import "partials/vars";
+@import "partials/mixins";
+@import "partials/base";
+
+/*:root {
+  --mainColor: red;
+}*/
+:root {
+  font-size: $fontSize;
+}
+
+.container {
+  background: honeydew;
+  width: 900px;
+  margin: 0 auto;
+}
+p {
+  margin: 0;
+  font-size: calc((36 / $fontSize) * 1rem);
+}

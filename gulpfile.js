@@ -14,13 +14,16 @@ var customselectors = require('postcss-custom-selectors');
 var grace = require('cssgrace');
 var gutil = require('gulp-util');
 var sourcemaps = require('gulp-sourcemaps');
+var jade = require('gulp-jade');
+
 
 
 gulp.task('styles', function() {
   var processors = [
     partialimport({}),
-    mixins(),
     simplevars(),
+    mixins(),
+
     customselectors(),
 
     nestedprops,
@@ -34,7 +37,7 @@ gulp.task('styles', function() {
 
   ];
 
-  return gulp.src('./dev/styles.css')
+  return gulp.src('./dev/assets/css/styles.css')
     // .pipe( sourcemaps.init())
     .pipe(plumber({
       errorHandler: function (error) {
@@ -44,14 +47,26 @@ gulp.task('styles', function() {
     }}))
     .pipe(postcss(processors))
     // .pipe( sourcemaps.write('.'))
-    .pipe(gulp.dest('./styles'))
+    .pipe(gulp.dest('./html/assets/css'))
     .pipe(browsersync.reload({stream:true}));
 });
 
-gulp.task('browsersync', ['styles'], function() {
+
+gulp.task('jade', function() {
+  gulp.src('./dev/*.jade')
+    .pipe(jade({
+      pretty: true
+    }))
+    .pipe(gulp.dest('./html'))
+    .pipe(browsersync.reload({stream:true}));
+
+});
+
+gulp.task('browsersync', ['styles', 'jade'], function() {
     browsersync({
+        browser: "google chrome",
         server: {
-            baseDir: './'
+            baseDir: './html'
         }
     });
     gulp.watch("*.html").on("change", browsersync.reload);
@@ -62,14 +77,14 @@ gulp.task('browsersync', ['styles'], function() {
 // });
 
 gulp.task('watch', function () {
-    gulp.watch('dev/*.css', ['styles']);
+    gulp.watch('dev/assets/css/*.css', ['styles']);
     // gulp.watch('assets/js/**', ['minify']);
     // gulp.watch(['index.html', '_layouts/*.html', '_posts/*', '_includes/*'], ['jekyll-rebuild']);
-    // gulp.watch(['_jadefiles/*.jade'], ['jade']);
+    gulp.watch(['dev/*.jade'], ['jade']);
 });
 
 /**
  * Default task, running just `gulp` will compile the sass,
  * compile the jekyll site, launch BrowserSync & watch files.
  */
-gulp.task('default', ['browsersync', 'watch', 'styles']);
+gulp.task('default', ['browsersync', 'watch', 'styles', 'jade']);

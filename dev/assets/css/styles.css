@@ -2,26 +2,21 @@
 @import "partials/vars";
 @import "partials/mixins";
 @import "partials/base";
-
 :root {
   font-size: $fontSize;
   font-family: 'Open Sans';
 }
-
 .width-50 {
   width: 50%;
 }
-
 img {
   max-width: 100%;
 }
-
 .container {
   display: flex;
   max-width: 1300px;
   margin: 0 auto;
 }
-
 .bunnybox {
   background: #fff url(../img/fibonacci_bunnies_large.jpg) no-repeat center center;
 }
@@ -47,7 +42,6 @@ img {
     font-weight: 700;
   }
 }
-
 .appBox {
   display: flex;
   flex-direction: column;
@@ -59,7 +53,6 @@ img {
   padding: 20px;
   margin-top: 30px;
   margin-bottom: 30px;
-
   h1 {
     font-size: 1.3em;
     text-align: left;
@@ -72,14 +65,11 @@ img {
   .storeBadge img {
     width: 150px;
     margin: 5px;
-    }
-
   }
-
+}
 @media screen and (max-width: 1100px) {
   .container {
     display: block;
-
     .width-50 {
       width: 100%;
     }
@@ -88,19 +78,16 @@ img {
     }
     .content {
       background: url(../img/fibonacci_bunnies_large.jpg) no-repeat center center fixed;
-
       .appBox {
-        background: rgba(255,255,255,0.9);
+        background: rgba(255, 255, 255, 0.9);
         text-align: center;
         h1 {
           text-align: center;
         }
       }
     }
-
   }
 }
-
 @media screen and (max-width: 545px), screen and (max-device-width: 545px) {
   .content {
     display: block;
@@ -108,7 +95,6 @@ img {
     .appBox {
       width: 100%;
       flex-direction: row;
-
       justify-content: center;
       h1 {
         font-size: 4em;
